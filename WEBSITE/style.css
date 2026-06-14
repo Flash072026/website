@@ -1,0 +1,667 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & VARIABLES RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #2563eb;       
+    --primary-dark: #1d4ed8;  
+    --dark-bg: #0b1329;       
+    --light-bg: #f8fafc;      
+    --text-main: #1e293b;     
+    --text-muted: #64748b;    
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* --- Badge & Header Global --- */
+.section-badge {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. NAVIGATION HEADER
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 1000;
+    border-b: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--primary);
+}
+
+.btn-nav {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #0f172a;
+    color: white;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.25s ease;
+}
+
+.btn-nav:hover {
+    background-color: var(--primary);
+}
+
+/* ==========================================================================
+   3. SECTION 1: HERO (BERANDA)
+   ========================================================================== */
+.hero-section {
+    background-color: var(--dark-bg);
+    padding: 140px 40px 100px 40px;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.tagline-badge {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.15);
+    color: #60a5fa;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 44px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin-bottom: 35px;
+    max-width: 540px;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-premium-primary {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--primary);
+    color: white;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.btn-premium-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-premium-secondary {
+    display: inline-block;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.25s ease;
+}
+
+.btn-premium-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.hero-graphic {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.graphic-bg-blur {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.mockup-img {
+    max-width: 320px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));
+}
+
+/* ==========================================================================
+   3b. OPERATOR MARQUEE SECTION (VERSI GAMBAR LOGO)
+   ========================================================================== */
+.operator-marquee-section {
+    background-color: white;
+    padding: 25px 0;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.marquee-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 60px; /* Jarak antar logo operator */
+    align-items: center;
+    animation: scrollMarquee 25s linear infinite; /* Kecepatan jalan (25 detik) */
+}
+
+/* Mengatur ukuran logo gambar agar seragam dan rapi */
+.operator-logo {
+    height: 35px; /* Mengunci tinggi logo agar sejajar rata air */
+    width: auto;  /* Lebar otomatis mengikuti rasio logo asli */
+    object-fit: contain;
+    filter: grayscale(20%); /* Membuat warna sedikit menyatu dengan web, opsional */
+    transition: all 0.3s ease;
+}
+
+/* Efek saat logo disorot kursor (kembali berwarna cerah & sedikit membesar) */
+.operator-logo:hover {
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+/* Berhenti bergerak saat diarahkan kursor */
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+/* Keyframes Pergerakan Loop CSS */
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ==========================================================================
+   4. SECTION 2: KUESIONER
+   ========================================================================== */
+.quiz-section {
+    background-color: var(--light-bg);
+    padding: 100px 40px;
+}
+
+.quiz-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.quiz-card {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    padding: 40px 30px;
+    border-radius: 16px;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.quiz-status {
+    font-size: 36px;
+    font-weight: 800;
+    color: #e2e8f0;
+    line-height: 1;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.quiz-card:hover .quiz-status {
+    color: rgba(37, 99, 235, 0.2);
+}
+
+.quiz-card p {
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.quiz-action-call {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
+    background: white;
+    padding: 24px 30px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.quiz-action-call p {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   5. SECTION 3: TAMPILAN APLIKASI
+   ========================================================================== */
+.app-slider-section {
+    background-color: white; /* Diubah jadi putih bersih agar selang-seling seimbang */
+    padding: 100px 40px;
+}
+
+.app-carousel {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--light-bg);
+    border-radius: 24px;
+    padding: 50px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-slide {
+    display: none;
+    width: 100%;
+    align-items: center;
+    gap: 50px;
+}
+
+.app-slide.active {
+    display: flex;
+}
+
+.slide-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.slide-image-container img {
+    max-width: 240px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.slide-info {
+    flex: 1.2;
+}
+
+.slide-info h4 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.slide-info p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --- Slider Navigation Arrows --- */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.slider-arrow:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.arrow-left { left: -22px; }
+.arrow-right { right: -22px; }
+
+/* --- Slider Indicators --- */
+.slider-indicators {
+    display: flex;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #cbd5e1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.indicator-dot.active {
+    background-color: var(--primary);
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Animation */
+.fade {
+    animation-name: fadeAnim;
+    animation-duration: 0.4s;
+}
+@keyframes fadeAnim {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+/* ==========================================================================
+   6. SECTION 4: KEUNGGULAN
+   ========================================================================== */
+.features-section {
+    background-color: var(--light-bg); /* Diubah jadi abu terang agar selang-seling */
+    padding: 100px 40px;
+}
+
+.features-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    padding: 45px 35px;
+    border-radius: 20px;
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+}
+
+.feature-icon-box {
+    width: 55px;
+    height: 55px;
+    background-color: rgba(37, 99, 235, 0.06);
+    color: var(--primary);
+    border-radius: 12px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   7. FOOTER STYLES
+   ========================================================================== */
+footer {
+    background-color: var(--dark-bg);
+    color: #94a3b8;
+    padding: 80px 40px 30px 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 50px;
+}
+
+.footer-brand-side {
+    max-width: 400px;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.footer-logo span {
+    color: var(--primary);
+}
+
+.footer-brand-side p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.legal-text {
+    font-size: 11px;
+    color: #475569;
+    font-weight: 600;
+}
+
+.footer-links-side h4 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footer-links-side p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.address-text {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 12px;
+    color: #475569;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 968px) {
+    .hero-container, .quiz-wrapper, .features-grid, .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .quiz-card, .feature-card {
+        width: 100%;
+    }
+    header nav {
+        display: none;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-cta-group {
+        justify-content: center;
+    }
+    .hero-graphic {
+        max-width: 100%;
+        margin-top: 30px;
+    }
+    .mockup-img {
+        max-width: 250px;
+    }
+    .app-slide {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .app-carousel {
+        padding: 30px 20px;
+    }
+    .arrow-left { left: -10px; }
+    .arrow-right { right: -10px; }
+}

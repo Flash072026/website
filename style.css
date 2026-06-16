@@ -74,7 +74,7 @@ header {
     align-items: center;
     padding: 20px 40px;
     z-index: 1000;
-    border-b: 1px solid rgba(226, 232, 240, 0.8);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .logo {
@@ -273,39 +273,31 @@ header nav ul li a:hover {
 .marquee-track {
     display: flex;
     width: max-content;
-    gap: 60px; /* Jarak antar logo operator */
+    gap: 60px;
     align-items: center;
-    animation: scrollMarquee 25s linear infinite; /* Kecepatan jalan (25 detik) */
+    animation: scrollMarquee 25s linear infinite;
 }
 
-/* Mengatur ukuran logo gambar agar seragam dan rapi */
 .operator-logo {
-    height: 35px; /* Mengunci tinggi logo agar sejajar rata air */
-    width: auto;  /* Lebar otomatis mengikuti rasio logo asli */
+    height: 35px;
+    width: auto;  
     object-fit: contain;
-    filter: grayscale(20%); /* Membuat warna sedikit menyatu dengan web, opsional */
+    filter: grayscale(20%);
     transition: all 0.3s ease;
 }
 
-/* Efek saat logo disorot kursor (kembali berwarna cerah & sedikit membesar) */
 .operator-logo:hover {
     filter: grayscale(0%);
     transform: scale(1.08);
 }
 
-/* Berhenti bergerak saat diarahkan kursor */
 .marquee-container:hover .marquee-track {
     animation-play-state: paused;
 }
 
-/* Keyframes Pergerakan Loop CSS */
 @keyframes scrollMarquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* ==========================================================================
@@ -381,7 +373,7 @@ header nav ul li a:hover {
    5. SECTION 3: TAMPILAN APLIKASI
    ========================================================================== */
 .app-slider-section {
-    background-color: white; /* Diubah jadi putih bersih agar selang-seling seimbang */
+    background-color: white; 
     padding: 100px 40px;
 }
 
@@ -505,7 +497,7 @@ header nav ul li a:hover {
    6. SECTION 4: KEUNGGULAN
    ========================================================================== */
 .features-section {
-    background-color: var(--light-bg); /* Diubah jadi abu terang agar selang-seling */
+    background-color: var(--light-bg); 
     padding: 100px 40px;
 }
 
@@ -628,7 +620,7 @@ footer {
 }
 
 /* ==========================================================================
-   8. RESPONSIVE DESIGN
+   8. RESPONSIVE DESIGN GLOBALS
    ========================================================================== */
 @media (max-width: 968px) {
     .hero-container, .quiz-wrapper, .features-grid, .footer-container {
@@ -667,7 +659,7 @@ footer {
 }
 
 /* ==========================================================================
-   SECTION BLOG PREMIUM (SUSUNAN KE SAMPING)
+   9. SECTION BLOG PREMIUM (SUSUNAN ABSOLUT KE SAMPING - FIXED)
    ========================================================================== */
 .blog-section {
     padding: 100px 20px;
@@ -676,25 +668,24 @@ footer {
     overflow: hidden;
 }
 
-/* Mengubah grid agar berjejer ke samping secara otomatis */
+/* Menggunakan CSS Grid 3 Kolom Khusus Layar Desktop Komputer/Laptop */
 .blog-grid {
     max-width: 1200px;
     margin: 40px auto 0 auto;
-    display: flex; /* Memaksa item berjejer ke samping */
-    flex-wrap: nowrap; /* Menjaga item tetap sejajar pada desktop */
-    gap: 30px;
-    justify-content: center;
+    display: grid !important; /* Paksa aktifkan Grid */
+    grid-template-columns: repeat(3, 1fr) !important; /* Kunci paksa 3 Kolom ke samping */
+    gap: 30px !important;
 }
 
 .blog-card {
-    flex: 1; /* Membagi ukuran ketiga kotak sama rata secara horisontal */
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column; 
+    display: flex !important;
+    flex-direction: column !important; 
     transition: all 0.3s ease;
+    height: 100%; /* Memastikan tinggi kotak sama rata */
 }
 
 .blog-card:hover {
@@ -712,7 +703,7 @@ footer {
 .blog-img-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Gambar terpotong rapi tanpa merusak rasio */
+    object-fit: cover !important; /* Menjaga gambar tidak gepeng */
     transition: transform 0.5s ease;
 }
 
@@ -751,7 +742,7 @@ footer {
 }
 
 .blog-read-more {
-    margin-top: auto; /* Memaksa tombol baca selalu berada di paling bawah kartu */
+    margin-top: auto; /* Tombol menempel rata di bawah kotak */
     display: inline-block;
     font-size: 0.9rem;
     color: #ffffff;
@@ -764,13 +755,10 @@ footer {
     color: #00b4d8;
 }
 
-/* 📱 RESPONSIVITAS LAYAR HP (Otomatis menyusun ke bawah jika layar sempit) */
+/* 📱 RESPONSIVITAS BLOG SAAT DI HP / TABLET (TIDAK AKAN BENTROK) */
 @media (max-width: 992px) {
     .blog-grid {
-        flex-wrap: wrap; 
-    }
-    .blog-card {
-        flex: 1 1 calc(50% - 20px); 
+        grid-template-columns: repeat(2, 1fr) !important; /* Menjadi 2 kolom di tablet */
     }
 }
 
@@ -778,8 +766,8 @@ footer {
     .blog-section {
         padding: 60px 20px;
     }
-    .blog-card {
-        flex: 1 1 100%; 
+    .blog-grid {
+        grid-template-columns: 1fr !important; /* Menjadi 1 kolom ke bawah khusus di HP */
     }
     .blog-img-box {
         height: 180px;

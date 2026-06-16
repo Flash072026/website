@@ -1,4 +1,1 @@
-User-agent: *
-Disallow: 
-
-Sitemap: https://agenpulsamurah.click/wp-sitemap.xml
+Sitemap: https://agenpulsamurah.click/sitemap.xml

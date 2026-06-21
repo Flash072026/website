@@ -259,15 +259,27 @@
         const dots = document.querySelectorAll('.indicator-dot');
 
         function updateSlideDisplay(index) {
-            if (index >= slides.length) // Apakah 4 >= 4? Jawabannya: YA!
-   			slideIndex = 0;          // Maka, paksa slideIndex kembali ke 0 (Gambar 1)
+    // 1. Jika index melebihi atau sama dengan jumlah total slide, kembali ke slide pertama (0)
+    if (index >= slides.length) {
+        slideIndex = 0;
+    } 
+    // 2. Jika index kurang dari 0 (tombol Prev di slide pertama), lompat ke slide terakhir
+    else if (index < 0) {
+        slideIndex = slides.length - 1;
+    } 
+    // 3. Jika index valid, perbarui nilai global slideIndex dengan index tujuan tersebut
+    else {
+        slideIndex = index;
+    }
 
-            slides.forEach(slide =&gt; slide.classList.remove('active'));
-            dots.forEach(dot =&gt; dot.classList.remove('active'));
+    // Hapus kelas 'active' dari semua slide dan dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
 
-            slides[slideIndex].classList.add('active');
-            dots[slideIndex].classList.add('active');
-        }
+    // Tampilkan slide dan dot yang aktif menggunakan variabel slideIndex yang sudah valid
+    slides[slideIndex].classList.add('active');
+    dots[slideIndex].classList.add('active');
+}
 
         function changeAppSlide(direction) {
             slideIndex += direction;

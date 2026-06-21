@@ -281,15 +281,14 @@
     dots[slideIndex].classList.add('active');
 }
 
-        function changeAppSlide(direction) {
-            slideIndex += direction;
-            updateSlideDisplay(slideIndex);
-        }
-
-        function goToAppSlide(index) {
-            slideIndex = index;
-            updateSlideDisplay(slideIndex);
-        }
+		let slideIndex = 0;
+        function changeAppSlide(direction) { 
+    	slideIndex += direction; 
+    	updateSlideDisplay(slideIndex); 
+		}
+		function goToAppSlide(index) {
+  	  // Logika fungsi update atau go to slide Anda...
+		}
 
         setInterval(3) =&gt; {
             changeAppSlide(1);

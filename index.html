@@ -259,7 +259,8 @@
         const dots = document.querySelectorAll('.indicator-dot');
 
         function updateSlideDisplay(index) {
-            if (index &gt;= slides.length) slideIndex = 0;
+            if (index >= slides.length) // Apakah 4 >= 4? Jawabannya: YA!
+   				 slideIndex = 0;          // Maka, paksa slideIndex kembali ke 0 (Gambar 1)
             if (index &lt; 0) slideIndex = slides.length - 1;
 
             slides.forEach(slide =&gt; slide.classList.remove('active'));

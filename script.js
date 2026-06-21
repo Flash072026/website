@@ -1,34 +1,50 @@
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
+let slideIndex = 0;
+// Jalankan fungsi pertama kali saat halaman dimuat
+showAppSlides(slideIndex);
 
-function showSlide(index) {
-    // Reset index jika melebihi jumlah slide atau kurang dari 0
-    if (index >= slides.length) currentSlideIndex = 0;
-    if (index < 0) currentSlideIndex = slides.length - 1;
-
-    // Hapus kelas 'active' dari semua slide dan dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-
-    // Tambahkan kelas 'active' pada slide dan dot yang dituju
-    slides[currentSlideIndex].classList.add('active');
-    dots[currentSlideIndex].classList.add('active');
+// Fungsi untuk tombol panah kanan/kiri
+function changeAppSlide(direction) {
+    showAppSlides(slideIndex += direction);
 }
 
-// Fungsi untuk tombol Next dan Prev
-function changeSlide(direction) {
-    currentSlideIndex += direction;
-    showSlide(currentSlideIndex);
+// Fungsi untuk klik titik indikator di bawah
+function goToAppSlide(index) {
+    showAppSlides(slideIndex = index);
 }
 
-// Fungsi untuk klik langsung di indikator titik (dots)
-function currentSlide(index) {
-    currentSlideIndex = index;
-    showSlide(currentSlideIndex);
+function showAppSlides(index) {
+    const slides = document.getElementsByClassName("app-slide");
+    const dots = document.getElementsByClassName("indicator-dot");
+    
+    if (slides.length === 0) return; // Proteksi jika elemen tidak ditemukan
+
+    // Jika melebihi slide terakhir, kembali ke awal
+    if (index >= slides.length) {
+        slideIndex = 0;
+    }
+    // Jika kurang dari slide pertama, lompat ke paling akhir
+    if (index < 0) {
+        slideIndex = slides.length - 1;
+    }
+
+    // Sembunyikan seluruh slide dengan menghapus class active
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+
+    // Matikan semua indikator dot yang aktif
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+
+    // Tampilkan slide yang sedang dipilih dan aktifkan dot-nya
+    slides[slideIndex].classList.add("active");
+    if (dots[slideIndex]) {
+        dots[slideIndex].classList.add("active");
+    }
 }
 
-// Menjalankan slide otomatis setiap 5 detik
-setInterval(() => {
-    changeSlide(1);
+// Opsional: Jika ingin otomatis berpindah setiap 5 detik
+setInterval(function() {
+    changeAppSlide(1);
 }, 5000);
